@@ -239,3 +239,30 @@ let data = {
   }
 };
 
+for(let a of data.results.shop){
+	console.log(a.access);//アクセスを表示
+  }
+for(let a of data.results.shop){
+    console.log(a.address);//住所を表示
+  }
+for(let a of data.results.shop){
+    console.log(a.close);//定休日を表示
+  }
+for(let a of data.results.shop){
+    console.log(a.budget.average);//一人当たりの値段を表示
+  }
+for(let a of data.results.shop){
+    console.log(a.genre.name);//ジャンルを表示
+  }
+for(let a of data.results.shop){
+    console.log(a.name);//店舗名を表示
+  }
+for(let a of data.results.shop){
+    console.log(a.open);//営業日時を表示
+  }
+for(let a of data.results.shop){
+    console.log(a.catch);//キャッチコピーを表示
+  }
+for(let a of data.results.shop){
+    console.log(a.wedding);//要項を表示
+  }
