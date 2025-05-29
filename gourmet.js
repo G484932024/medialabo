@@ -239,6 +239,8 @@ let data = {
   }
 };
 
+
+
 for(let a of data.results.shop){
 	console.log(a.access);//アクセスを表示
   }
