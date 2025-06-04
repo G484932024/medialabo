@@ -1,0 +1,47 @@
+div#result{
+    display:grid ;
+    grid-gap: 15px; 
+    text-align: center;
+
+  
+  background-color: rgba(252, 255, 244, 0.587);  
+  margin: 110px; 
+
+}
+li {
+    list-style-type: none;
+}
+body{
+    background-image: url(../../../Downloads/pexels-khezez-32334386.jpg);
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+}
+h1 {
+    text-align: center;
+    font-style: oblique;
+    color:rgb(74, 74, 74);
+    
+    width: 400px;
+    height: 60px;
+
+    position: relative;
+  padding: 0.6em;
+  background:rgba(252, 255, 244, 0.587);
+}
+h1:after {
+    position: absolute;
+    content: '';
+    top: 100%;
+    left: 30px;
+    border: 15px solid transparent;
+    border-top: 15px solid rgba(252, 255, 244, 0.587);
+    width: 0;
+    height: 0;
+  }
+  
+  
+
+div#kennsaku{
+    text-align: center;
+}

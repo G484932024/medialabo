@@ -2,18 +2,45 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <mata charset="utf-8">
-            <link rel="stylesheet"  href="project.css">
-            <script src="gourmet.js" defer></script>
-            <title>プロジェクト課題</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="project.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.27.2/axios.min.js"></script>
+        <script src="gourmet.js" defer></script>
+        <title>プロジェクト課題</title>
     </head>
+    
     <body>
-        <h2>八王子市グルメ情報</h2>
+        <h1>八王子市グルメ情報</h1>
 
-        <label for="gurume">検索キー：</label> <!---aaa-->
-    <input type="text" name="yoso" id="kazuate" size="10">
+        <div id="kennsaku">
+
+        <label for="santaro">ジャンル</label>
+        <select name=" genre" id="gurume">
+        <option value="G001">居酒屋</option>
+        <option value="G002">ダイニングバー・バル</option>
+        <option value="G003">創作料理</option>
+        <option value="G004"> 和食</option>
+        <option value="G005">洋食</option>
+        <option value="G006">イタリアン・フレンチ</option>
+        <option value="G007">中華</option>
+        <option value="G008">焼肉・ホルモン</option>
+        <option value="G009">アジア・エスニック料理</option>
+        <option value="G010">各国料理</option>
+        <option value="G011">カラオケ・パーティ</option>
+        <option value="G012">バー・カクテル</option>
+        <option value="G013">ラーメン</option>
+        <option value="G014">カフェ・スイーツ</option>
+        <option value="G015">その他グルメ</option>
+        <option value="G016">お好み焼き・もんじゃ</option>
+        <option value="G017">韓国料理</option>
+
+    </select>
     <button id="check">検索</button>
-        <ul>
+
+</div>
+    
+    <div id="result"></div>
+       <!----- <ul>
             <li>アクセス情報：</li>
             <li>住所：</li>
             <li>定休日：</li>
@@ -23,7 +50,8 @@
             <li>営業時間：</li>
             <li>キャッチコピー：</li>
             <li>おすすめポイント：</li>
-
-        </ul>
+            </ul>
+       -->
+       
     </body>
 </html>

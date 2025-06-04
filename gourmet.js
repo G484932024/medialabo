@@ -1,26 +1,155 @@
 
 // 課題3-2 のプログラムはこの関数の中に記述すること
-function print(data) {
+
+
+
+function print(data){
+
+
+  for(let a of data.results.shop){
+    console.log(a.access);//アクセスを表示
+    console.log(a.address);//住所を表示
+    console.log(a.close);//定休日を表示
+    console.log(a.budget.average);//一人当たりの値段を表示
+    console.log(a.genre.name);//ジャンルを表示
+    console.log(a.name);//店舗名を表示
+    console.log(a.open);//営業日時を表示
+    console.log(a.catch);//キャッチコピーを表示
+    console.log(a.wedding);//要項を表示
+    }
 
 }
 
 // 課題5-1 の関数 printDom() はここに記述すること
+
+
 function printDom(data) {
 
+  let count = 0;
+
+  
+ 
+
+  for(let a of data.results.shop){
+
+    let div = document.querySelector('div#result');
+    count++;
+
+    let countP = document.createElement('p');
+    countP.textContent = '検索結果'+count+'件目';
+    //console.log(countP);
+    div.insertAdjacentElement('beforeend',countP);
+
+    let u=document.createElement('ul');//新しいul要素を追加
+    let i=document.querySelector('div#result'); //div要素のid(result)を検索してiにいれる
+    i.insertAdjacentElement('beforeend',u);//iのあとにu要素を追加
+    let l=document.createElement('li'); //新しくli要素を追加
+    
+		l=document.createElement('li');//li要素を更新
+		u.insertAdjacentElement('beforeend',l);//ul要素の前にl要素を追加
+		l.textContent='アクセス情報：'+a.access;//オブジェクトを表示　　　繰り返し
+
+    l=document.createElement('li');           //2
+    u.insertAdjacentElement('beforeend',l);
+    l.textContent='住所：'+a.address;
+
+    l=document.createElement('li');          //3
+    u.insertAdjacentElement('beforeend',l);
+    l.textContent='定休日：'+a.close;
+
+    l=document.createElement('li');
+    u.insertAdjacentElement('beforeend',l);   //4
+    l.textContent='予算：'+a.budget.average;
+
+    l=document.createElement('li');          //5
+    u.insertAdjacentElement('beforeend',l);
+    l.textContent='ジャンル：'+a.genre.name;
+
+    l=document.createElement('li');         //6
+    u.insertAdjacentElement('beforeend',l);
+    l.textContent='店舗名：' +a.name;
+
+    l=document.createElement('li');         //7
+    u.insertAdjacentElement('beforeend',l);
+    l.textContent='営業時間:'+a.open;
+
+    l=document.createElement('li');         //8
+    u.insertAdjacentElement('beforeend',l);
+    l.textContent='キャッチコピー:'+a.catch;
+
+    l=document.createElement('li');         //9
+    u.insertAdjacentElement('beforeend',l);
+    l.textContent='おすすめポイント:'+a.wedding;
+	}
+  
+  
 }
 
-// 課題6-1 のイベントハンドラ登録処理は以下に記述
 
+
+// 課題6-1 のイベントハンドラ登録処理は以下に記述
+let b = document.querySelector('#check');
+b.addEventListener('click', sendRequest);
 
 
 
 // 課題6-1 のイベントハンドラ sendRequest() の定義
 function sendRequest() {
+let div=document.querySelector('div#result'); 
+let u=document.querySelectorAll('ul');
+let rep=document.querySelectorAll('p');
+
+
+
+  if(div !== null){//divに何かあったら
+    for(let ul of u){//ul要素のuを削除する。
+      ul.remove();
+    }
+    for(let p of rep){//p要素のrepを削除。
+      p.remove();
+    }
+  }
+
+  
+  //if (countP!==null){
+    //countP.remove();
+  // count.remove();
+  //}
+
+  let s = document.querySelector('select#gurume');
+  let idx = s.selectedIndex;  // idx 番目の option が選択された
+  let os = s.querySelectorAll('option');  // s の子要素 option をすべて検索
+  let o = os.item(idx);       // os の idx 番目の要素
+
+  console.log('選択された ' + idx + ' 番目の option の情報:');
+  console.log('  value=' + o.getAttribute('value'));  // id 属性を表示
+  console.log('  textContent='+o.textContent);
+
+  let url = 'https://www.nishita-lab.org/web-contents/jsons/hotpepper/'+o.getAttribute('value')+'.json';
+
+  axios.get(url)
+      .then(showResult)   // 通信成功
+      .catch(showError)   // 通信失敗
+      .then(finish);      // 通信の最後の処理
 
 }
 
 // 課題6-1: 通信が成功した時の処理は以下に記述
 function showResult(resp) {
+  // サーバから送られてきたデータを出力
+  let data = resp.data;
+
+  // data が文字列型なら，オブジェクトに変換する
+  if (typeof data === 'string') {
+    data = JSON.parse(data);
+  }
+  // data をコンソールに出力
+  console.log(data);
+
+  // data.x を出力
+  console.log(data.x);
+  printDom(data);
+  
 
 }
 
@@ -32,6 +161,7 @@ function showError(err) {
 // 課題6-1: 通信の最後にいつも実行する処理
 function finish() {
     console.log('Ajax 通信が終わりました');
+
 }
 
 ////////////////////////////////////////
@@ -241,30 +371,3 @@ let data = {
 
 
 
-for(let a of data.results.shop){
-	console.log(a.access);//アクセスを表示
-  }
-for(let a of data.results.shop){
-    console.log(a.address);//住所を表示
-  }
-for(let a of data.results.shop){
-    console.log(a.close);//定休日を表示
-  }
-for(let a of data.results.shop){
-    console.log(a.budget.average);//一人当たりの値段を表示
-  }
-for(let a of data.results.shop){
-    console.log(a.genre.name);//ジャンルを表示
-  }
-for(let a of data.results.shop){
-    console.log(a.name);//店舗名を表示
-  }
-for(let a of data.results.shop){
-    console.log(a.open);//営業日時を表示
-  }
-for(let a of data.results.shop){
-    console.log(a.catch);//キャッチコピーを表示
-  }
-for(let a of data.results.shop){
-    console.log(a.wedding);//要項を表示
-  }
