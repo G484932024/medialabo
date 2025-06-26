@@ -15,7 +15,7 @@ h1{
 
 h2 {
 	
-	background:linear-gradient(white, #ffefaf );
+	background:linear-gradient(to right, white, #ffefaf );
 	font-family:cursive;
 	color:#3f3faf;
 	margin: 5px;
